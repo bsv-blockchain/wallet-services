@@ -1,0 +1,56 @@
+# Wallet Services Configuration
+# Copy to config.yaml and modify as needed.
+# All values can also be set via environment variables with the BWS_ prefix,
+# e.g. BWS_NETWORK=test, BWS_SERVER_ADDRESS=:8080, BWS_TERANODE_BROADCAST_URLS=https://...
+
+# Bitcoin network: "main", "test", or "stn"
+network: main
+
+# Log level: "debug", "info", "warn", "error"
+log_level: info
+
+# Data directory for persistent files
+storage_path: ~/.arcade
+
+# HTTP server settings
+server:
+  address: ":3011"
+  read_timeout: 30s
+  write_timeout: 30s
+  shutdown_timeout: 10s
+
+# Database configuration
+database:
+  type: sqlite
+  sqlite_path: ~/.arcade/arcade.db
+
+# Event publisher configuration
+events:
+  type: memory
+  buffer_size: 1000
+
+# Teranode configuration (REQUIRED: at least one broadcast URL)
+teranode:
+  broadcast_urls:
+    - https://arc.taal.com
+  # datahub_urls: []
+  # auth_token: ""
+  timeout: 30s
+
+# Transaction validator settings
+validator:
+  max_tx_size: 4294967296
+  max_script_size: 500000
+  max_sig_ops: 4294967295
+  min_fee_per_kb: 100
+
+# Webhook delivery settings
+webhook:
+  prune_interval: 1h
+  max_age: 24h
+  max_retries: 10
+
+# Authentication (optional)
+auth:
+  enabled: false
+  # token: ""
